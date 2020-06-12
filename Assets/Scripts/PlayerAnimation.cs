@@ -16,11 +16,8 @@ public class PlayerAnimation : MonoBehaviour
         moveController = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
-        characterGrounding = GetComponent<CharacterGrounding>();
-    }
 
-    private void Start()
-    {
+        characterGrounding = GetComponent<CharacterGrounding>();
         characterGrounding.OnAirborne += HandleAirborne;
         characterGrounding.OnLand += HandleLand;
     }

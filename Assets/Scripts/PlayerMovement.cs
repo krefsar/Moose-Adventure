@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float CurrentHorizontalSpeed { get; private set; }
+    public event Action OnJump = delegate { };
 
     private CharacterGrounding characterGrounding;
     private Rigidbody2D rb;
@@ -34,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
         if (characterGrounding.IsGrounded && Input.GetButtonDown("Jump"))
         {
             rb.AddForce(Vector2.up * jumpForce);
+            OnJump();
         }
     }
 }

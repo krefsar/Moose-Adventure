@@ -21,9 +21,12 @@ public class CharacterGrounding : MonoBehaviour
 
     private void Update()
     {
+        bool prevAirborne = false;
+
         if (!IsGrounded)
         {
             OnAirborne();
+            prevAirborne = true;
         }
 
         foreach (var position in positions)
@@ -31,6 +34,10 @@ public class CharacterGrounding : MonoBehaviour
             CheckFootForGrounding(position);
             if (IsGrounded)
             {
+                if (prevAirborne)
+                {
+                    OnLand();
+                }
                 break;
             }
         }
@@ -72,7 +79,7 @@ public class CharacterGrounding : MonoBehaviour
 
                 if (!IsGrounded)
                 {
-                    OnLand();
+                    // OnLand();
                 }
 
                 IsGrounded = true;
